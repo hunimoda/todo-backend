@@ -1,0 +1,5 @@
+[19-Dec-2021 11:13:07 Asia/Seoul] Uncaught exception: 'Exception' with message 'Controller class App\Controllers\Home not found'
+Stack trace:
+#0 C:\xampp\htdocs\public\index.php(37): Core\Router-&gt;dispatch(&#039;&#039;)
+#1 {main}
+Thrown in C:\xampp\htdocs\Core\Router.php(103)

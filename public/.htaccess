@@ -1,0 +1,29 @@
+# Remove the question mark from the request but maintain the query string
+RewriteEngine On
+
+# Uncomment the following line if your public folder isn't the web server's root
+# RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# Request url                           QUERY_STRING
+# localhost                     =>      ''
+# localhost/                    =>      ''
+# localhost/abc                 =>      'abc'
+# localhost/abc/                =>      'abc/'
+# localhost?key=value           =>      'key=value'
+# localhost/?key=value          =>      'key=value'
+# localhost/abc?key=value       =>      'abc&key=value'
+# localhost/abc/?key=value      =>      'abc/&key=value'
+
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+# CORS handling
+<IfModule mod_headers.c>
+  Header add Access-Control-Allow-Origin *
+  Header add Access-Control-Allow-Methods *
+  Header add Access-Control-Allow-Headers *
+  Header add Access-Control-Max-Age *
+</IfModule>
